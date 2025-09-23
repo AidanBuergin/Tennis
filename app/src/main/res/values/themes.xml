@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Tennis" parent="Base.Theme.Tennis" />
+
+    <style name="TennisStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#90ee90</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
 </resources>

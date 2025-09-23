@@ -7,13 +7,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_height="match_parent"
+
+        android:columnCount="2"
+        android:rowCount="3"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/leftButton"
+            android:text="Federer"
+            android:width="160dp"
+            style="@style/TennisStyle"
+            />
+
+        <Button
+            android:id="@+id/rightButton"
+            android:text="Nadal"
+            android:width="160dp"
+            style="@style/TennisStyle"
+            />
+
+        <TextView
+            android:id="@+id/leftSet"
+            android:text="0"
+            style="@style/TennisStyle"
+            />
+
+        <TextView
+            android:id="@+id/rightSet"
+            android:text="0"
+            style="@style/TennisStyle"
+            />
+
+        <TextView
+            android:id="@+id/leftGame"
+            android:text="0"
+            style="@style/TennisStyle"
+            />
+
+        <TextView
+            android:id="@+id/rightGame"
+            android:text="0"
+            style="@style/TennisStyle"
+            />
+
+        <TextView
+            android:id="@+id/winner"
+            android:text=""
+            android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal"
+            style="@style/TennisStyle"
+            />
+
+    </GridLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
