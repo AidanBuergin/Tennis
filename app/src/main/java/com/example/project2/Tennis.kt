@@ -6,47 +6,68 @@ class Tennis {
     var rightSetScore = 0
     var leftGameScore = 0
     var rightGameScore = 0
-    var gameOver = false
+    var winner = ""
     val gameScoreList : ArrayList<String> = arrayListOf("0", "15", "30", "40", "AD")
 
-    constructor(){
+    fun score(player : String) : ArrayList<String> {
 
-    }
-
-    fun play(player : String) : String {
-        val leftScored : Boolean = (player == "left")
-        val rightScored : Boolean = (player == "right")
-
-        if(leftScored){
+        if(player == "left"){
+            //check for AD game
+            if (rightGameScore == 4) {
+                leftGameScore = 3
+                rightGameScore = 3
+                return arrayListOf(gameScoreList[3], gameScoreList[3])
+            }
             //conditions for game being over
             if ((leftGameScore == 4) || (leftGameScore == 3 && rightGameScore < 3)) {
                 leftGameScore = 0
                 rightGameScore = 0
-                increaseSetScore("left")
-            } else {
+                increaseSetScore(player)
+                return arrayListOf(gameScoreList[0], gameScoreList[0])
+            }
+            //just a normal addition to the score
+            else {
                 leftGameScore++
-                return gameScoreList[leftGameScore]
+                return arrayListOf(gameScoreList[leftGameScore], gameScoreList[rightGameScore])
             }
         }
 
-        else {
-
+        else{
+            //check for AD game
+            if (leftGameScore == 4) {
+                rightGameScore = 3
+                leftGameScore = 3
+                return arrayListOf(gameScoreList[3], gameScoreList[3])
+            }
+            //conditions for game being over
+            if ((rightGameScore == 4) || (rightGameScore == 3 && leftGameScore < 3)) {
+                rightGameScore = 0
+                leftGameScore = 0
+                increaseSetScore(player)
+                return arrayListOf(gameScoreList[0], gameScoreList[0])
+            }
+            //just a normal addition to the score
+            else {
+                rightGameScore++
+                return arrayListOf(gameScoreList[leftGameScore], gameScoreList[rightGameScore])
+            }
         }
-
-
     }
 
     fun increaseSetScore(scorer : String){
 
         if(scorer == "left") {
             leftSetScore++
-            if (leftSetScore >= 6 && leftSetScore > rightSetScore + 1){
-                gameOver = true
+            if (leftSetScore >= 4 && leftSetScore > rightSetScore + 1){
+                winner = "Federer won"
             }
         }
 
         else {
-
+            rightSetScore++
+            if (rightSetScore >= 4 && rightSetScore > leftSetScore + 1){
+                winner = "Nadal won"
+            }
         }
     }
 }
