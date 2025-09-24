@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             rightGame.text=newScore[1]
             leftSet.text=("" + tennis.leftSetScore)
             rightSet.text=("" + tennis.rightSetScore)
-            Log.w("MainActivity", tennis.winner)
             if(tennis.winner != ""){
                 winner.text=tennis.winner
                 leftButton.isEnabled = false
